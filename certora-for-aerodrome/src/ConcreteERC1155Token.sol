@@ -3,7 +3,7 @@ pragma solidity ^0.8.20;
 
 import "../lib/openzeppelin-contracts/contracts/token/ERC1155/ERC1155.sol"; // Caminho pode variar conforme seu projeto;
 
-contract MyERC1155Token is ERC1155 {
+contract ConcreteERC1155Token is ERC1155 {
     address public owner;
 
     uint256 public constant GOLD = 1;
