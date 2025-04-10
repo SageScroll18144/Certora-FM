@@ -1,0 +1,3 @@
+[submodule "certora-for-aerodrome/lib/forge-std"]
+	path = certora-for-aerodrome/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
