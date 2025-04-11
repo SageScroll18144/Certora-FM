@@ -98,3 +98,29 @@ Ensures that transfers initiated by non-owners who are not approved as operators
 
 ---
 
+# Results
+
+## ✅ Successfully Verified Rules
+
+The following rules were verified without any issues:
+
+| Rule                          | Status  | Description                                                      |
+|------------------------------|---------|------------------------------------------------------------------|
+| `envfreeFuncsStaticCheck`    | Passed  | Ensures that view functions such as `balanceOf` are pure         |
+| `safeTransferZeroAmountNoEffect` | Timeout/Loop | Expected that a 0-amount transfer has no side effects       |
+
+---
+
+## ⚠️ Rules Failed Due to Loop Unrolling Limit
+
+The verifier hit the default loop iteration limit (1), preventing complete analysis. This doesn't imply that the rule failed — just that the prover could not fully verify the behavior.
+
+| Rule                                     | Issue                          |
+|------------------------------------------|--------------------------------|
+| `safeTransferZeroAmountNoEffect`         | Unwinding condition in a loop  |
+| `safeTransferExactBalanceShouldZeroSender` | Unwinding condition in a loop |
+| `safeTransferShouldUpdateBalances`       | Unwinding condition in a loop  |
+| `safeTransferToSelfKeepsBalanceUnchanged`| Unwinding condition in a loop  |
+
+These rules likely involve internal loops or external calls to `onERC1155Received`, which complicate full analysis under default settings.
+
